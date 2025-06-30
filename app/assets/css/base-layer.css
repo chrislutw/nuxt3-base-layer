@@ -1,0 +1,10 @@
+/* @nuxt/ui 3.0.0 在 base-layer 中使用會造成ssr時css裸奔的問題，需在最後的 app 專案使用，先關閉 */
+/* @import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+@plugin "tailwind-scrollbar"; */
+
+.base-layer {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

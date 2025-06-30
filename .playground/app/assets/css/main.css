@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@source "../../../../";
+@plugin "tailwind-scrollbar" {
+  nocompatible: true;
+}
+@plugin "@tailwindcss/typography";
