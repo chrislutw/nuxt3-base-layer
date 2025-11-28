@@ -8,28 +8,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: npm i -g corepack@latest && corepack enable
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
-      - run: pnpm install --frozen-lockfile
-      - name: 產生必要檔案
-        run: pnpm dev:prepare
-
-      - name: 執行程式碼檢查
-        run: pnpm lint
-
-      - name: 執行類型檢查
-        run: pnpm typecheck
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
