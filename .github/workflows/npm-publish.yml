@@ -20,10 +20,11 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
-      - name: publish
+      - name: set token
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           echo "@chrislutw:registry=https://registry.npmjs.org/" >> ~/.npmrc
-          pnpm publish --no-git-checks --access public
+      - name: publish
+        run: pnpm publish --no-git-checks --access public
