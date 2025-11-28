@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on:
-      group: OLD_TS_WEB_RUNNER_GROUP
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 

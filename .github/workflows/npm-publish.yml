@@ -19,7 +19,14 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test
+      - name: 產生必要檔案
+        run: pnpm dev:prepare
+
+      - name: 執行程式碼檢查
+        run: pnpm lint
+
+      - name: 執行類型檢查
+        run: pnpm typecheck
 
   publish-npm:
     needs: build

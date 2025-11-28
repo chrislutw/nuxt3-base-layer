@@ -8,8 +8,7 @@ on:
 jobs:
   test:
     name: 程式碼 lint & 類型檢查
-    runs-on:
-      group: OLD_TS_WEB_RUNNER_GROUP # 使用與其他工作流程相同的運行器群組
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
