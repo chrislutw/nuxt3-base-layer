@@ -60,7 +60,7 @@ export default defineNuxtConfig({
   },
 
   llms: {
-    domain: 'https://old-ts-web.github.io/nuxt3-base-layer',
+    domain: 'https://chrislutw.github.io/nuxt3-base-layer',
     title: 'Base Layer',
     description: '為 nuxt 應用程式提供基礎設施的套件',
     sections: [

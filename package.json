@@ -1,5 +1,5 @@
 {
-  "name": "@old-ts-web/nuxt3-base-layer",
+  "name": "@chrislutw/nuxt3-base-layer",
   "type": "module",
   "version": "1.6.4",
   "packageManager": "pnpm@10.20.0",
