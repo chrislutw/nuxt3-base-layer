@@ -37,8 +37,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # Specify runner + deployment step
-    runs-on:
-      group: OLD_TS_WEB_RUNNER_GROUP
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
