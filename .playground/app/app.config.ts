@@ -4,7 +4,7 @@ export default defineAppConfig({
     name: 'My amazing Nuxt layer (overwritten)',
   },
   socials: {
-    github: 'old-ts-web/nuxt3-base-layer',
+    github: 'chrislutw/nuxt3-base-layer',
   },
   cover: '/cover.jpg',
 
@@ -20,7 +20,7 @@ export default defineAppConfig({
     colorMode: true,
     links: [{
       'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/old-ts-web/nuxt3-base-layer',
+      'to': 'https://github.com/chrislutw/nuxt3-base-layer',
       'target': '_blank',
       'aria-label': 'GitHub',
     }],
@@ -30,7 +30,7 @@ export default defineAppConfig({
     colorMode: true,
     links: [{
       'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/old-ts-web/nuxt3-base-layer',
+      'to': 'https://github.com/chrislutw/nuxt3-base-layer',
       'target': '_blank',
       'aria-label': 'base layer',
     }],
