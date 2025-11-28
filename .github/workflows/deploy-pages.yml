@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: OLD_TS_WEB_RUNNER_GROUP
     steps:
       - uses: actions/checkout@v4
 
@@ -12,12 +13,14 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
       # Pick your own package manager and build script
-      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm install --frozen-lockfile
       - run: pnpm generate
         env:
-          NUXT_APP_BASE_URL: /nuxt3-base-layer/
+          NUXT_SITE_URL: https://chrislutw.github.io/nuxt3-base-layer
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -35,7 +38,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # Specify runner + deployment step
-    runs-on: ubuntu-latest
+    runs-on:
+      group: OLD_TS_WEB_RUNNER_GROUP
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

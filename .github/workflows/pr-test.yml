@@ -1,0 +1,45 @@
+name: PR測試流程
+
+on:
+  pull_request_target:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: 程式碼 lint & 類型檢查
+    runs-on:
+      group: OLD_TS_WEB_RUNNER_GROUP # 使用與其他工作流程相同的運行器群組
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: 使用套件管理設定
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: 設置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 使用與deploy工作流一致的Node.js版本
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: 設定環境設定檔
+        run: |
+          if [ -f .playground/.env.example ]; then
+            mv .playground/.env.example .playground/.env
+          fi
+
+      - name: 安裝依賴項
+        run: pnpm install --frozen-lockfile
+
+      - name: 產生必要檔案
+        run: pnpm dev:prepare
+
+      - name: 執行程式碼檢查
+        run: pnpm lint
+
+      - name: 執行類型檢查
+        run: pnpm typecheck

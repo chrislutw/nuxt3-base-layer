@@ -13,14 +13,22 @@ export default defineNuxtConfig({
   experimental: {
     asyncContext: true,
   },
+  alias: {
+    '~root': fileURLToPath(new URL('../', import.meta.url)),
+    '~root/*': fileURLToPath(new URL('../*', import.meta.url)),
+  },
 
   extends: ['..'],
   modules: [
     '@nuxt/ui',
     '@nuxt/eslint',
     '@nuxt/content',
+    'nuxt-og-image',
+    'nuxt-llms',
   ],
-  colorMode: { classSuffix: '' },
+  ui: {
+    // colorMode: false,
+  },
   css: ['~/assets/css/main.css'],
 
   eslint: {
@@ -44,11 +52,24 @@ export default defineNuxtConfig({
           // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
           theme: {
             dark: 'material-theme-lighter',
-            default: 'material-theme-palenight',
+            default: 'material-theme-darker',
           },
         },
       },
     },
+  },
+
+  llms: {
+    domain: 'https://old-ts-web.github.io/nuxt3-base-layer',
+    title: 'Base Layer',
+    description: '為 nuxt 應用程式提供基礎設施的套件',
+    sections: [
+      {
+        title: '文件',
+        description: '技術文件與使用說明',
+        contentCollection: 'docs',
+      },
+    ],
   },
 
   icon: {
@@ -56,6 +77,16 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       includeCustomCollections: true,
+    },
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        '@nuxt/content/utils',
+      ],
     },
   },
 

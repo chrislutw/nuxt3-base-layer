@@ -169,5 +169,8 @@
     "protobuf",
     "defu",
     "ofetch"
-  ]
+  ],
+  "markdown.copyFiles.destination": {
+    "**/*": "../public/images/${fileName}"
+  }
 }

@@ -1,4 +1,4 @@
-import { useRuntimeConfig } from '#app/nuxt'
+import { useRuntimeConfig } from '#imports'
 
 // 以下為個別 API 的使用範例
 
