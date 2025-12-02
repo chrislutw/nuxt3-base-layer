@@ -16,7 +16,7 @@
     "dev": "nuxi dev .playground",
     "dev:prepare": "nuxt prepare .playground",
     "build": "nuxt build .playground",
-    "generate": "nuxt generate .playground --preset github_pages",
+    "generate": "nuxt build .playground --preset github_pages",
     "preview": "nuxt preview .playground",
     "upgrade": "nuxt upgrade --dedupe",
     "lint": "eslint .",
